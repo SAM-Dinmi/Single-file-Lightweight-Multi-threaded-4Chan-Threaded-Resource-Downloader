@@ -1,6 +1,19 @@
 import re,threading,os
 import requests as req
 
+###################################################################
+###################################################################
+#
+#该文件为旧版，弃用Demo. | This file is an Old Version, abandon the Demo.
+#
+# Blog:hearyvens.com    Github:@Netpos-Dinmi(NegLongse | Hearyvens)
+#                 Twitter : Hearyvens
+# Youtube/Bilibili :   Hearyvens | NegLongse
+# By:20230323 11:58 -- Hearyvens | NegLongse
+###################################################################
+###################################################################
+
+
 url = input("Please enter URL:")
 
 headers = {
