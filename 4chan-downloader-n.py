@@ -32,13 +32,6 @@ def multi_thread_down(files_names, files_urls):
         thread.start()
 
 r = req.get(url,headers=headers)
-# s = re.findall(r'<a href="\/(\/.*?)".*?>(.*?)<\/a>', r.text)
-# for item in s:
-#     if item[0].endswith('/'):
-#         print("shabi")
-#     else:
-#         print(item)
-
 if __name__ == '__main__':
 
     s = re.findall(r'<a href="\/\/(i.4cdn.org.*?)".*?>(.*?)<\/a>', r.text)
