@@ -33,13 +33,20 @@ def multi_thread_down(files_names, files_urls):
 
 r = req.get(url,headers=headers)
 if __name__ == '__main__':
-
     s = re.findall(r'<a href="\/\/(i.4cdn.org.*?)".*?>(.*?)<\/a>', r.text)
+    if len(s) == 0:
+        r = req.get(url,headers=headers)
+        s = re.findall(r'<a href="\/\/(is2.4chan.org.*?)".*?>(.*?)<\/a>', r.text)
+
     p = re.findall(r'<input type="checkbox" .* value="delete"> <span class="subject">(.*?)<\/span> <span class="nameBlock"><span class="name">(.*?)<\/span>', r.text)
-    for items in p:
-        folder_path_name = p[0][0]
-        new_folder_path_name = str(folder_path_name).replace("/","-")
-        print("mkdir" + folder_path_name)
+
+    folder_path_name = p[0][0]
+    new_folder_path_name = str(folder_path_name).replace("/","-")
+    if len(p[0][0]) == 0:
+        p = re.findall(r'<span class="name">.*?<\/span>.*?class="dateTime".*?<blockquote class="postMessage".*?>(.*?)<\/blockquote>', r.text)
+        folder_path_name = p[0]
+        new_folder_path_name = str(folder_path_name).replace("/","-") and str(folder_path_name).replace("<br>","") 
+    print("mkdir" + new_folder_path_name)
         
     os.mkdir(new_folder_path_name)
     os.chdir(new_folder_path_name)
