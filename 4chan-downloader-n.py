@@ -90,9 +90,9 @@ if __name__ == '__main__':
         files_urls.append(files_url)
 
     # 提取页面的标题作为文件夹名
-    folder_name = re.search(r'<title>(.*?)<\/title>', r.text)
+    folder_name = re.search(r'<title>.*?-(.*?)-.*?4chan<\/title>', r.text)
     folder_name = folder_name.group(1) if folder_name else "downloads"
-    folder_name = sanitize_filename(folder_name)  # 清理非法字符
+    folder_name = sanitize_filename(folder_name)    # 清理非法字符
 
     # 创建下载文件夹
     try:
